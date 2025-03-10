@@ -31,12 +31,20 @@
                 <li class="top-nav__list__item">
                     <a href="/about-us" class="top-nav__list__item__link">About Us</a>
                 </li>
-                <li class="top-nav__list__item top-nav__list__item-right">
-                    <a href="/login" class="top-nav__list__item__link">Sign In</a>
-                </li>
-                <li class="top-nav__list__item">
-                    <a href="/register" class="top-nav__list__item__link">Sign Up</a>
-                </li>
+
+                <% if (user) { %>
+                    <form action="/logout" method="post" class="top-nav__list__item top-nav__list__item-right">
+                        <button type="submit" class="top-nav__list__item__button">Sign Out</button>
+                    </form>
+                <% } else { %>
+                    <li class="top-nav__list__item top-nav__list__item-right">
+                        <a href="/login" class="top-nav__list__item__link">Sign In</a>
+                    </li>
+                    <li class="top-nav__list__item">
+                        <a href="/register" class="top-nav__list__item__link">Sign Up</a>
+                    </li>
+                <% } %>
+                
             </ul>
         </nav>
     </header>

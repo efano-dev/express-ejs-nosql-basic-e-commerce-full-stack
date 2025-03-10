@@ -3,6 +3,8 @@
     --clr-primary: hsl(0, 84%, 64%);
     --clr-secondary: hsl(210, 32%, 28%);
     --clr-tertiary: hsl(0, 0%, 87%);
+    --clr-error: hsl(0, 66%, 55%);
+    --clr-success: hsl(153, 60%, 31%);
     --line-height: 1.5625;
     --top-nav-padding: 1.25rem;
 }
@@ -59,7 +61,7 @@ main {
     color: var(--clr-primary);
 }
 
-.top-nav__brand *, .top-nav__list__item__link * {
+.top-nav__brand * {
     font-size: 1rem;
     font-weight: 700;
 }
@@ -69,6 +71,23 @@ main {
     cursor: pointer;
     border: none;
     background-color: transparent;
+}
+
+.top-nav__list__item__button {
+    font: inherit;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.top-nav__list__item__button {
+    text-decoration: none;
+    color: var(--clr-tertiary);
+}
+
+.top-nav__list__item__button:hover {
+    color: var(--clr-primary);
 }
 
 .top-nav__list {
@@ -100,8 +119,23 @@ main {
 
 .auth-form {
     padding: 2rem;
+    width: 21.875rem;
     background-color: var(--clr-secondary);
     color: var(--clr-tertiary);
+    border-radius: 4px;
+}
+
+.auth-form-error {
+    text-align: center;
+    margin-top: 1rem;
+    background-color: var(--clr-error);
+    border-radius: 4px;
+}
+
+.auth-form-success {
+    text-align: center;
+    margin-top: 1rem;
+    background-color: var(--clr-success);
     border-radius: 4px;
 }
 
@@ -113,6 +147,7 @@ main {
     display: block;
     font: inherit;
     padding: 0.25rem;
+    width: 100%;
     background-color: var(--clr-tertiary);
     color: var(--clr-secondary);
     border: none;
