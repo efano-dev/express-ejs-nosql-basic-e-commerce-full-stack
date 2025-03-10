@@ -1,0 +1,21 @@
+<%- include("templates/start") %>
+
+    <div class="auth-form-container">
+        <form action="/login" method="POST" class="auth-form">
+            <h2>Login</h2>
+
+            <div class="auth-form__input-group">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" class="auth-form__input">
+            </div>
+
+            <div class="auth-form__input-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="auth-form__input">
+            </div>
+
+            <button type="submit" class="auth-form__button">Sign In</button>
+        </form>
+    </div>
+
+<%- include("templates/end") %>

@@ -32,12 +32,12 @@ main {
     background-color: var(--clr-tertiary);
 }
 
-.basic-e-commerce-logo, .hamburger-menu {
+.hamburger-menu {
     height: calc(1rem * var(--line-height));
     fill: var(--clr-tertiary);
 }
 
-.basic-e-commerce-logo:hover, .hamburger-menu:hover {
+.hamburger-menu:hover {
     fill: var(--clr-primary);
 }
 
@@ -50,8 +50,23 @@ main {
     background-color: var(--clr-secondary);
 }
 
+.top-nav__brand, .top-nav__list__item__link {
+    text-decoration: none;
+    color: var(--clr-tertiary);
+}
+
+.top-nav__brand:hover, .top-nav__list__item__link:hover {
+    color: var(--clr-primary);
+}
+
+.top-nav__brand *, .top-nav__list__item__link * {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
 .top-nav__toggler {
     padding: 0;
+    cursor: pointer;
     border: none;
     background-color: transparent;
 }
@@ -77,14 +92,43 @@ main {
     margin-left: auto;
 }
 
-.top-nav__list__item__link {
-    font-weight: 700;
-    text-decoration: none;
-    color: var(--clr-tertiary);
+.auth-form-container {
+    display: grid;
+    place-items: center;
+    height: calc(100dvh - (var(--top-nav-padding) * 2) - (1rem * var(--line-height)));
 }
 
-.top-nav__list__item__link:hover {
-    color: var(--clr-primary);
+.auth-form {
+    padding: 2rem;
+    background-color: var(--clr-secondary);
+    color: var(--clr-tertiary);
+    border-radius: 4px;
+}
+
+.auth-form__input-group {
+    margin-top: 1rem;
+}
+
+.auth-form__input {
+    display: block;
+    font: inherit;
+    padding: 0.25rem;
+    background-color: var(--clr-tertiary);
+    color: var(--clr-secondary);
+    border: none;
+    border-radius: 4px;
+}
+
+.auth-form__button {
+    font: inherit;
+    margin-top: calc(1rem * var(--line-height));
+    padding: 0.25rem;
+    width: 100%;
+    cursor: pointer;
+    background-color: var(--clr-primary);
+    color: var(--clr-tertiary);
+    border: none;
+    border-radius: 4px;
 }
 
 @media screen and (min-width: 36em) {
