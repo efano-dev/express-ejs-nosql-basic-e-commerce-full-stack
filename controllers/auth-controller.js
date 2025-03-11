@@ -3,6 +3,11 @@ import bcrypt from "bcrypt";
 
 function getRegister(req, res, next) {
     res.render("user/register", {
+        input: {
+            email: req.flash("email"),
+            password: req.flash("password"),
+            confirmPassword: req.flash("confirmPassword")
+        },
         error: req.flash("error"),
         success: req.flash("success")
     });
@@ -13,11 +18,19 @@ async function postRegister(req, res, next) {
 
     if (!email || !password) {
         req.flash("error", "Email and Password are Required.");
+        req.flash("email", email);
+        req.flash("password", password);
+        req.flash("confirmPassword", confirmPassword);
+
         return res.redirect("/register");
     }
 
     if (password !== confirmPassword) {
         req.flash("error", "Password and Confirm Password do not Match.");
+        req.flash("email", email);
+        req.flash("password", password);
+        req.flash("confirmPassword", confirmPassword);
+
         return res.redirect("/register");
     }
 
@@ -27,7 +40,20 @@ async function postRegister(req, res, next) {
         });
 
         if (existingUser) {
+            if (existingUser.deletedAt !== null) {
+                req.flash("error", "Email is associated to a Deleted User.");
+                req.flash("email", email);
+                req.flash("password", password);
+                req.flash("confirmPassword", confirmPassword);
+
+                return res.redirect("/register");
+            }
+
             req.flash("error", "Email is associated with an Existing User.");
+            req.flash("email", email);
+            req.flash("password", password);
+            req.flash("confirmPassword", confirmPassword);
+            
             return res.redirect("/register");
         }
 
@@ -37,6 +63,10 @@ async function postRegister(req, res, next) {
         });
 
         req.flash("success", "User Created Sucessfully.");
+        req.flash("email", "");
+        req.flash("password", "");
+        req.flash("confirmPassword", "");
+
         res.redirect("/register");
     } catch (error) {
         console.error(error);
@@ -45,6 +75,10 @@ async function postRegister(req, res, next) {
 
 function getLogin(req, res, next) {
     res.render("user/login", {
+        input: {
+            email: req.flash("email"),
+            password: req.flash("password")
+        },
         error: req.flash("error"),
         success: req.flash("success")
     });
@@ -55,6 +89,9 @@ async function postLogin(req, res, next) {
 
     if (!email || !password) {
         req.flash("error", "Email and Password are Required.");
+        req.flash("email", email);
+        req.flash("password", password);
+
         return res.redirect("/login");
     }
 
@@ -65,6 +102,17 @@ async function postLogin(req, res, next) {
 
         if (!existingUser) {
             req.flash("error", "Email or Password is Invalid.");
+            req.flash("email", email);
+            req.flash("password", password);
+
+            return res.redirect("/login");
+        }
+
+        if (existingUser.deletedAt !== null) {
+            req.flash("error", "Email is associated to a Deleted User.");
+            req.flash("email", email);
+            req.flash("password", password);
+
             return res.redirect("/login");
         }
 
@@ -72,6 +120,9 @@ async function postLogin(req, res, next) {
 
         if (!isPasswordValid) {
             req.flash("error", "Email or Password is Invalid.");
+            req.flash("email", email);
+            req.flash("password", password);
+
             return res.redirect("/login");
         }
 

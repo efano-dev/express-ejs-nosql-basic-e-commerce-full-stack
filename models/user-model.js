@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.methods.softDelete = function () {
-    this.deletedAt = Date.now;
+    this.deletedAt = new Date();
 
     return this.save();
 }
