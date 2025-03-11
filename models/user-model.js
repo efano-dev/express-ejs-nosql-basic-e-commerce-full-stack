@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
     email: String,
@@ -20,4 +20,4 @@ userSchema.methods.softDelete = function () {
 
 const User = mongoose.model("User", userSchema)
 
-module.exports = User;
+export default User;

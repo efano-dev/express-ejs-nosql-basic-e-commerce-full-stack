@@ -1,5 +1,5 @@
-const User = require("../models/user-model");
-const bcrypt = require("bcrypt");
+import User from "../models/user-model.js";
+import bcrypt from "bcrypt";
 
 function getRegister(req, res, next) {
     res.render("user/register", {
@@ -96,7 +96,7 @@ async function postLogout(req, res, next) {
     });
 }
 
-module.exports = {
+export {
     getRegister,
     postRegister,
     getLogin,

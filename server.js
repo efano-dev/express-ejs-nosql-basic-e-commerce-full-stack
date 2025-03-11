@@ -1,15 +1,18 @@
-require("dotenv").config();
+import { config } from "dotenv";
 
-const express = require("express");
-const mongoose = require("mongoose");
-const session = require("express-session");
-const MongoDBStore = require("connect-mongodb-session")(session);
-const flash = require('connect-flash');
-const authRoute = require("./routes/auth-route");
-const userRoute = require("./routes/user-route");
+config();
+
+import express from "express";
+import mongoose from "mongoose";
+import session from "express-session";
+import MongoDBSession from "connect-mongodb-session";
+import flash from 'connect-flash';
+import authRoute from "./routes/auth-route.js";
+import userRoute from "./routes/user-route.js";
 
 const app = express();
 const mongooseConnect = mongoose.connect(process.env.MONGODB_URI);
+const MongoDBStore = MongoDBSession(session);
 const store = new MongoDBStore({
     uri: process.env.MONGODB_URI,
     collection: 'sessions'
