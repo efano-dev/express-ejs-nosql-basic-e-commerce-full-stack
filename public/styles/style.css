@@ -4,7 +4,7 @@
     --clr-primary-gradient: linear-gradient(hsl(10, 85%, 55%), hsl(18, 100%, 61%));
     --clr-secondary: hsl(0, 0%, 100%);
     --clr-tertiary: hsl(0, 0%, 96%);
-    --clr-quaternary: hsla(0, 0%, 0%, 0.65);
+    --clr-quaternary: hsl(0, 0%, 0%);
     --clr-quinary: hsla(0, 0%, 0%, 0.15);
     --clr-error: hsl(351, 85%, 55%);
     --clr-caution: hsl(33, 93%, 52%);
@@ -139,7 +139,7 @@ main {
 .auth-form__input {
     display: block;
     font: inherit;
-    padding: 0.25rem;
+    padding: 0.5rem;
     width: 100%;
     color: var(--clr-quaternary);
     border: 1px solid var(--clr-quaternary);
@@ -149,8 +149,68 @@ main {
 .auth-form__button {
     font: inherit;
     margin-top: calc(1rem * var(--line-height));
-    padding: 0.25rem;
+    padding: 0.5rem;
     width: 100%;
+    cursor: pointer;
+    background-color: var(--clr-primary);
+    color: var(--clr-secondary);
+    border: none;
+    border-radius: 4px;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+    justify-items: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.card {
+    max-width: 21.875rem;
+    background-color: var(--clr-secondary);
+    color: var(--clr-quaternary);
+    border-radius: 4px;
+}
+
+.card__image {
+    margin-inline: auto;
+    height: 15rem;
+    object-fit: contain;
+}
+
+.card__content {
+    padding: 1rem;
+}
+
+.card__content__details {
+    margin-top: 1rem;
+    height: 4.5rem;
+    overflow: hidden;
+}
+
+.card__content__price {
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.card__content__button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+a.card__content__button {
+    text-decoration: none;
+    padding: 0.5rem;
+    background-color: var(--clr-primary);
+    color: var(--clr-secondary);
+    border-radius: 4px;
+}
+
+button.card__content__button {
+    font: inherit;
+    padding: 0.5rem;
     cursor: pointer;
     background-color: var(--clr-primary);
     color: var(--clr-secondary);
