@@ -1,10 +1,14 @@
 
 :root {
-    --clr-primary: hsl(0, 84%, 64%);
-    --clr-secondary: hsl(210, 32%, 28%);
-    --clr-tertiary: hsl(0, 0%, 87%);
-    --clr-error: hsl(0, 66%, 55%);
-    --clr-success: hsl(153, 60%, 31%);
+    --clr-primary: hsl(10, 85%, 55%);
+    --clr-primary-gradient: linear-gradient(hsl(10, 85%, 55%), hsl(18, 100%, 61%));
+    --clr-secondary: hsl(0, 0%, 100%);
+    --clr-tertiary: hsl(0, 0%, 96%);
+    --clr-quaternary: hsla(0, 0%, 0%, 0.65);
+    --clr-quinary: hsla(0, 0%, 0%, 0.15);
+    --clr-error: hsl(351, 85%, 55%);
+    --clr-caution: hsl(33, 93%, 52%);
+    --clr-success: hsl(144, 58%, 45%);
     --line-height: 1.5625;
     --top-nav-padding: 1.25rem;
 }
@@ -36,15 +40,7 @@ main {
 
 .hamburger-menu {
     height: calc(1rem * var(--line-height));
-    fill: var(--clr-tertiary);
-}
-
-.hamburger-menu:hover {
-    fill: var(--clr-primary);
-}
-
-.hamburger-menu.active {
-    fill: var(--clr-primary);
+    fill: var(--clr-secondary);
 }
 
 .top-nav {
@@ -53,20 +49,12 @@ main {
     justify-content: space-between;
     flex-wrap: wrap;
     padding: var(--top-nav-padding);
-    background-color: var(--clr-secondary);
+    background-image: var(--clr-primary-gradient);
 }
 
 .top-nav__brand, .top-nav__list__item__link {
     text-decoration: none;
-    color: var(--clr-tertiary);
-}
-
-.top-nav__brand:hover, .top-nav__list__item__link:hover {
-    color: var(--clr-primary);
-}
-
-.top-nav__brand.active, .top-nav__list__item__link.active {
-    color: var(--clr-primary);
+    color: var(--clr-secondary);
 }
 
 .top-nav__brand * {
@@ -91,11 +79,7 @@ main {
 
 .top-nav__list__item__button {
     text-decoration: none;
-    color: var(--clr-tertiary);
-}
-
-.top-nav__list__item__button:hover {
-    color: var(--clr-primary);
+    color: var(--clr-secondary);
 }
 
 .top-nav__list {
@@ -129,8 +113,9 @@ main {
     padding: 2rem;
     width: 21.875rem;
     background-color: var(--clr-secondary);
-    color: var(--clr-tertiary);
+    color: var(--clr-quaternary);
     border-radius: 4px;
+    box-shadow: 0 4px 8px var(--clr-quinary);
 }
 
 .auth-form-error {
@@ -156,9 +141,8 @@ main {
     font: inherit;
     padding: 0.25rem;
     width: 100%;
-    background-color: var(--clr-tertiary);
-    color: var(--clr-secondary);
-    border: none;
+    color: var(--clr-quaternary);
+    border: 1px solid var(--clr-quaternary);
     border-radius: 4px;
 }
 
@@ -169,7 +153,7 @@ main {
     width: 100%;
     cursor: pointer;
     background-color: var(--clr-primary);
-    color: var(--clr-tertiary);
+    color: var(--clr-secondary);
     border: none;
     border-radius: 4px;
 }
