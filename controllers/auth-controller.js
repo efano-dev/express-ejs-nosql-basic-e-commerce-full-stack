@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 function getRegister(req, res, next) {
     res.render("user/register", {
         input: {
+            name: req.flash("name"),
             email: req.flash("email"),
             password: req.flash("password"),
             confirmPassword: req.flash("confirmPassword")
@@ -14,10 +15,11 @@ function getRegister(req, res, next) {
 }
 
 async function postRegister(req, res, next) {
-    const { email, password, confirmPassword } = req.body;
+    const { name, email, password, confirmPassword } = req.body;
 
-    if (!email || !password) {
-        req.flash("error", "Email and Password are Required.");
+    if (!name || !email || !password) {
+        req.flash("error", "Name, Email, and Password are Required.");
+        req.flash("name", name);
         req.flash("email", email);
         req.flash("password", password);
         req.flash("confirmPassword", confirmPassword);
@@ -27,6 +29,7 @@ async function postRegister(req, res, next) {
 
     if (password !== confirmPassword) {
         req.flash("error", "Password and Confirm Password do not Match.");
+        req.flash("name", name);
         req.flash("email", email);
         req.flash("password", password);
         req.flash("confirmPassword", confirmPassword);
@@ -42,6 +45,7 @@ async function postRegister(req, res, next) {
         if (existingUser) {
             if (existingUser.deletedAt !== null) {
                 req.flash("error", "Email is associated to a Deleted User.");
+                req.flash("name", name);
                 req.flash("email", email);
                 req.flash("password", password);
                 req.flash("confirmPassword", confirmPassword);
@@ -50,6 +54,7 @@ async function postRegister(req, res, next) {
             }
 
             req.flash("error", "Email is associated with an Existing User.");
+            req.flash("name", name);
             req.flash("email", email);
             req.flash("password", password);
             req.flash("confirmPassword", confirmPassword);
@@ -58,11 +63,13 @@ async function postRegister(req, res, next) {
         }
 
         const newUser = await User.create({
+            name: name,
             email: email,
             password: await bcrypt.hash(password, 12)
         });
 
         req.flash("success", "User Created Sucessfully.");
+        req.flash("name", "");
         req.flash("email", "");
         req.flash("password", "");
         req.flash("confirmPassword", "");
@@ -128,7 +135,9 @@ async function postLogin(req, res, next) {
 
         req.session.user = {
             _id: existingUser._id,
+            name: existingUser.name,
             email: existingUser.email,
+            role: existingUser.role,
             __v: existingUser.__v
         };
         res.redirect("/");

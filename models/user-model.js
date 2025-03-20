@@ -1,8 +1,13 @@
-import mongoose from "mongoose";
+import { Schema, model } from "mongoose";
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
+    name: String,
     email: String,
     password: String,
+    role: {
+        type: String,
+        default: "user"
+    },
     deletedAt: {
         type: Date,
         default: null
@@ -16,8 +21,8 @@ userSchema.methods.softDelete = function () {
     this.deletedAt = new Date();
 
     return this.save();
-}
+};
 
-const User = mongoose.model("User", userSchema)
+const User = model("User", userSchema);
 
 export default User;

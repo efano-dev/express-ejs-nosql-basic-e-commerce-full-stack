@@ -126,6 +126,7 @@ main {
     text-align: center;
     margin-top: 1rem;
     background-color: var(--clr-error);
+    color: var(--clr-secondary);
     border-radius: 4px;
 }
 
@@ -133,6 +134,7 @@ main {
     text-align: center;
     margin-top: 1rem;
     background-color: var(--clr-success);
+    color: var(--clr-secondary);
     border-radius: 4px;
 }
 
@@ -194,6 +196,11 @@ main {
 }
 
 .card__content__price {
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.card__content__seller {
     font-weight: 600;
     margin-top: 1rem;
 }
