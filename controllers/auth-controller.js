@@ -1,7 +1,7 @@
 import User from "../models/user-model.js";
 import bcrypt from "bcrypt";
 
-function getRegister(req, res, next) {
+const getRegister = (req, res, next) => {
     res.render("user/register", {
         input: {
             name: req.flash("name"),
@@ -14,7 +14,7 @@ function getRegister(req, res, next) {
     });
 }
 
-async function postRegister(req, res, next) {
+const postRegister = async (req, res, next) => {
     const { name, email, password, confirmPassword } = req.body;
 
     if (!name || !email || !password) {
@@ -80,7 +80,7 @@ async function postRegister(req, res, next) {
     }
 }
 
-function getLogin(req, res, next) {
+const getLogin = (req, res, next) => {
     res.render("user/login", {
         input: {
             email: req.flash("email"),
@@ -91,7 +91,7 @@ function getLogin(req, res, next) {
     });
 }
 
-async function postLogin(req, res, next) {
+const postLogin = async (req, res, next) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -146,7 +146,7 @@ async function postLogin(req, res, next) {
     }
 }
 
-async function postLogout(req, res, next) {
+const postLogout = async (req, res, next) => {
     req.session.destroy((error) => {
         if (!error) {
             return res.redirect("/");

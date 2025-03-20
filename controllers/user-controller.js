@@ -1,6 +1,6 @@
 import Product from "../models/product-model.js";
 
-async function getProducts(req, res, next) {
+const getProducts = async (req, res, next) => {
     try {
         const products = await Product.find({
             deletedAt: null
