@@ -42,7 +42,7 @@ main {
     background-color: var(--clr-tertiary);
 }
 
-.hamburger-menu {
+.hamburger-menu, .profile-dropdown {
     height: calc(1rem * var(--line-height));
     fill: var(--clr-secondary);
 }
@@ -73,19 +73,6 @@ main {
     background-color: transparent;
 }
 
-.top-nav__list__item__button {
-    font: inherit;
-    padding: 0;
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-}
-
-.top-nav__list__item__button {
-    text-decoration: none;
-    color: var(--clr-secondary);
-}
-
 .top-nav__list {
     display: none;
     margin: 0;
@@ -105,6 +92,60 @@ main {
 
 .top-nav__list__item-right {
     margin-left: auto;
+}
+
+.top-nav__list__item__dropdown {
+    position: relative;
+}
+
+.top-nav__list__item__dropdown-button {
+    display: block;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.top-nav__list__item__dropdown-list {
+    position: absolute;
+    top: calc(1rem * var(--line-height));
+    left: 0;
+    display: none;
+    margin: 0;
+    padding: 0.5rem 2rem 0.5rem 0.5rem;
+    list-style: none;
+    background-image: var(--clr-primary-gradient);
+    color: var(--clr-secondary);
+    border: 1px solid var(--clr-secondary);
+    border-radius: 4px;
+}
+
+.top-nav__list__item__dropdown-list.active {
+    display: block;
+}
+
+.top-nav__list__item__dropdown-list__item {
+    margin-top: 0.5rem;
+}
+
+.top-nav__list__item__dropdown-list__item:first-child {
+    margin-top: 0;
+}
+
+.top-nav__list__item__dropdown-list__item__link {
+    text-decoration: none;
+    color: var(--clr-secondary);
+}
+
+.top-nav__list__item__dropdown-list__item__button {
+    font: inherit;
+    text-wrap: nowrap;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    text-decoration: none;
+    color: var(--clr-secondary);
 }
 
 .auth-form-container {
@@ -255,5 +296,10 @@ button.card__content__button {
     
     .top-nav__list__item:last-child {
         margin-right: 0;
+    }
+
+    .top-nav__list__item__dropdown-list {
+        left: auto;
+        right: 0;
     }
 }

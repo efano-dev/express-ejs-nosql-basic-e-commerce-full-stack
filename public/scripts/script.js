@@ -1,8 +1,12 @@
 const topNavToggler = document.getElementById("topNavToggler");
-const hamburgerMenu = document.getElementById("hamburgerMenu");
 const topNavList = document.getElementById("topNavList");
+const topNavListItemDropdownButton = document.getElementById("topNavListItemDropdownButton");
+const topNavListItemDropdownList = document.getElementById("topNavListItemDropdownList");
 
 topNavToggler.onclick = (event) => {
-    hamburgerMenu.classList.toggle("active");
     topNavList.classList.toggle("active");
+};
+
+topNavListItemDropdownButton.onclick = (event) => {
+    topNavListItemDropdownList.classList.toggle("active");
 };
