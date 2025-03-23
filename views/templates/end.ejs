@@ -1,6 +1,9 @@
     </main>
     <footer>
         <script src="/scripts/script.js"></script>
+        <% if (user && user.role === "seller") { %>
+            <script src="/scripts/seller-script.js"></script>
+        <% } %>
     </footer>
 </body>
 </html>
