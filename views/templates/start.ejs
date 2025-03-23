@@ -13,7 +13,7 @@
 <body>
     <header>
         <nav class="top-nav">
-            <a href="<%= (user && user.role === 'seller') ? '/seller' : '/' %>" class="top-nav__brand">
+            <a href="<%= (url.split('/')[1] === 'seller') ? '/seller' : '/' %>" class="top-nav__brand">
                 <h1>Basic E-Commerce</h1>
             </a>
             <button type="button" class="top-nav__toggler" id="topNavToggler">
