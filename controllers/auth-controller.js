@@ -2,7 +2,7 @@ import User from "../models/user-model.js";
 import bcrypt from "bcrypt";
 
 const getRegister = (req, res, next) => {
-    res.render("user/register", {
+    res.render("register", {
         input: {
             name: req.flash("name"),
             email: req.flash("email"),
@@ -81,7 +81,7 @@ const postRegister = async (req, res, next) => {
 }
 
 const getLogin = (req, res, next) => {
-    res.render("user/login", {
+    res.render("login", {
         input: {
             email: req.flash("email"),
             password: req.flash("password")

@@ -16,7 +16,16 @@ const isLoggedIn = (req, res, next) => {
     next();
 };
 
+const isAuthorized = (authorizedRole) => (req, res, next) => {
+    if (req.session.user.role !== authorizedRole) {
+        return res.redirect("/");
+    }
+
+    next();
+};
+
 export {
     isAuthenticated,
-    isLoggedIn
+    isLoggedIn,
+    isAuthorized
 };

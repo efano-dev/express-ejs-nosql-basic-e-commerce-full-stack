@@ -6,14 +6,14 @@
     <meta name="descriptiton" content="Basic E-Commerce Full-Stack - Express/EJS/NoSQL">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="/styles/style.css">
 
     <title>Express/EJS/NoSQL - Basic E-Commerce Full-Stack</title>
 </head>
 <body>
     <header>
         <nav class="top-nav">
-            <a href="/" class="top-nav__brand <%= (url === '/') ? 'active' : '' %>">
+            <a href="<%= (user && user.role === 'seller') ? '/seller' : '/' %>" class="top-nav__brand">
                 <h1>Basic E-Commerce</h1>
             </a>
             <button type="button" class="top-nav__toggler" id="topNavToggler">
@@ -22,15 +22,17 @@
                 </svg>
             </button>
             <ul class="top-nav__list" id="topNavList">
-                <li class="top-nav__list__item">
-                    <a href="/products" class="top-nav__list__item__link <%= (url === '/products') ? 'active' : '' %>">Products</a>
-                </li>
-                <li class="top-nav__list__item">
-                    <a href="/contact-us" class="top-nav__list__item__link <%= (url === '/contact-us') ? 'active' : '' %>">Contact Us</a>
-                </li>
-                <li class="top-nav__list__item">
-                    <a href="/about-us" class="top-nav__list__item__link <%= (url === '/about-us') ? 'active' : '' %>">About Us</a>
-                </li>
+                <% if (url.split('/')[1] !== "seller") { %>
+                    <li class="top-nav__list__item">
+                        <a href="/products" class="top-nav__list__item__link">Products</a>
+                    </li>
+                    <li class="top-nav__list__item">
+                        <a href="/contact-us" class="top-nav__list__item__link">Contact Us</a>
+                    </li>
+                    <li class="top-nav__list__item">
+                        <a href="/about-us" class="top-nav__list__item__link">About Us</a>
+                    </li>
+                <% } %>
 
                 <% if (user) { %>
                     <li class="top-nav__list__item top-nav__list__item-right top-nav__list__item__dropdown">
@@ -41,15 +43,27 @@
                         </button>
                         <ul class="top-nav__list__item__dropdown-list" id="topNavListItemDropdownList">
                             <li class="top-nav__list__item__dropdown-list__item">
-                                <a href="/users/me" class="top-nav__list__item__dropdown-list__item__link">
+                                <a href="<%= (url.split('/')[1] === 'seller') ? '/users/me' : '/seller/users/me' %>" class="top-nav__list__item__dropdown-list__item__link">
                                     Profile
                                 </a>
                             </li>
-                            <li class="top-nav__list__item__dropdown-list__item">
-                                <a href="/cart" class="top-nav__list__item__dropdown-list__item__link">
-                                    Cart
-                                </a>
-                            </li>
+
+                            <% if (user.role === "seller") { %>
+                                <li class="top-nav__list__item__dropdown-list__item">
+                                    <a href="<%= (url.split('/')[1] === 'seller') ? '/' : '/seller' %>" class="top-nav__list__item__dropdown-list__item__link">
+                                        <%= (url.split('/')[1] === "seller") ? "Buyer" : "Seller" %> Page
+                                    </a>
+                                </li>
+                            <% } %>
+
+                            <% if (url.split('/')[1] !== "seller") { %>
+                                <li class="top-nav__list__item__dropdown-list__item">
+                                    <a href="/cart" class="top-nav__list__item__dropdown-list__item__link">
+                                        Cart
+                                    </a>
+                                </li>
+                            <% } %>
+                            
                             <form action="/logout" method="post" class="top-nav__list__item__dropdown-list__item">
                                 <button type="submit" class="top-nav__list__item__dropdown-list__item__button">Sign Out</button>
                             </form>
@@ -66,5 +80,16 @@
             </ul>
         </nav>
     </header>
-    <main>
-        
+    <main class="<%= (url.split('/')[1] === 'seller') ? 'seller-main' : '' %>">
+        <% if (url.split("/")[1] === "seller") { %>
+            <nav class="side-nav">
+                <ul class="side-nav__list" >
+                    <li class="side-nav__list__item">
+                        <a href="/seller/dashboard" class="side-nav__list__item__link">Dashboard</a>
+                    </li>
+                    <li class="side-nav__list__item">
+                        <a href="/seller/products" class="side-nav__list__item__link">Manage Products</a>
+                    </li>
+                </ul>
+            </nav>
+        <% } %>

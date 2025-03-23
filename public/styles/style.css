@@ -6,6 +6,7 @@
 :root {
     --clr-primary: hsl(10, 85%, 55%);
     --clr-primary-gradient: linear-gradient(hsl(10, 85%, 55%), hsl(18, 100%, 61%));
+    --clr-primary-gradient-inverse: linear-gradient(hsl(18, 100%, 61%), hsl(10, 85%, 55%));
     --clr-secondary: hsl(0, 0%, 100%);
     --clr-tertiary: hsl(0, 0%, 96%);
     --clr-quaternary: hsl(0, 0%, 0%);
@@ -14,7 +15,7 @@
     --clr-caution: hsl(33, 93%, 52%);
     --clr-success: hsl(144, 58%, 45%);
     --line-height: 1.5625;
-    --top-nav-padding: 1.25rem;
+    --nav-padding: 1.25rem;
 }
 
 *, *::before, *::after {
@@ -38,7 +39,7 @@ img, svg {
 }
 
 main {
-    min-height: calc(100dvh - (var(--top-nav-padding) * 2) - (1rem * var(--line-height)));
+    min-height: calc(100dvh - (var(--nav-padding) * 2) - (1rem * var(--line-height)));
     background-color: var(--clr-tertiary);
 }
 
@@ -52,7 +53,7 @@ main {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: var(--top-nav-padding);
+    padding: var(--nav-padding);
     background-image: var(--clr-primary-gradient);
 }
 
@@ -126,6 +127,7 @@ main {
 
 .top-nav__list__item__dropdown-list__item {
     margin-top: 0.5rem;
+    text-wrap: nowrap;
 }
 
 .top-nav__list__item__dropdown-list__item:first-child {
@@ -139,7 +141,6 @@ main {
 
 .top-nav__list__item__dropdown-list__item__button {
     font: inherit;
-    text-wrap: nowrap;
     padding: 0;
     cursor: pointer;
     border: none;
@@ -151,7 +152,7 @@ main {
 .auth-form-container {
     display: grid;
     place-items: center;
-    height: calc(100dvh - (var(--top-nav-padding) * 2) - (1rem * var(--line-height)));
+    height: calc(100dvh - (var(--nav-padding) * 2) - (1rem * var(--line-height)));
 }
 
 .auth-form {
@@ -268,6 +269,37 @@ button.card__content__button {
     color: var(--clr-secondary);
     border: none;
     border-radius: 4px;
+}
+
+.seller-main {
+    display: flex;
+}
+
+.side-nav {
+    height: calc(100dvh - (var(--nav-padding) * 2) - (1rem * var(--line-height)));
+    padding: var(--nav-padding);
+    background-image: var(--clr-primary-gradient-inverse);
+}
+
+.side-nav__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.side-nav__list__item {
+    margin-top: 1.5rem;
+    text-wrap: nowrap;
+}
+
+.side-nav__list__item__link {
+    text-decoration: none;
+    color: var(--clr-secondary);
+}
+
+.seller-content {
+    height: calc(100dvh - (var(--nav-padding) * 2) - (1rem * var(--line-height)));
+    overflow-y: scroll;
 }
 
 @media screen and (min-width: 48em) {
