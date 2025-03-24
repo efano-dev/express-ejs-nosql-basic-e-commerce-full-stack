@@ -208,7 +208,7 @@ main {
 
 .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(21.875rem, 1fr));
     justify-items: center;
     align-content: start;
     gap: 2rem;
@@ -216,7 +216,7 @@ main {
 }
 
 .card {
-    max-width: 21.875rem;
+    width: 21.875rem;
     background-color: var(--clr-secondary);
     color: var(--clr-quaternary);
     border-radius: 4px;

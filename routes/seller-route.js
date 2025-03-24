@@ -7,6 +7,8 @@ router.get("/", sellerController.getDashboard);
 
 router.get("/dashboard", sellerController.getDashboard);
 
-router.get("/products", sellerController.getProducts);
+router.route("/products")
+    .get(sellerController.getProducts)
+    .post(sellerController.createProduct);
 
 export default router;
