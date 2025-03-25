@@ -1,9 +1,5 @@
 import Product from "../models/product-model.js";
 
-const getDashboard = (req, res, next) => {
-    res.render("seller/dashboard");
-}
-
 const getProducts = async (req, res, next) => {
     const user = req.session.user;
 
@@ -40,7 +36,6 @@ const createProduct = async (req, res, next) => {
 }
 
 export {
-    getDashboard,
     getProducts,
     createProduct
 };

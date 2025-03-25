@@ -26,12 +26,6 @@
                     <li class="top-nav__list__item">
                         <a href="/products" class="top-nav__list__item__link">Products</a>
                     </li>
-                    <li class="top-nav__list__item">
-                        <a href="/contact-us" class="top-nav__list__item__link">Contact Us</a>
-                    </li>
-                    <li class="top-nav__list__item">
-                        <a href="/about-us" class="top-nav__list__item__link">About Us</a>
-                    </li>
                 <% } %>
 
                 <% if (user) { %>
@@ -84,9 +78,6 @@
         <% if (url.split("/")[1] === "seller") { %>
             <nav class="side-nav">
                 <ul class="side-nav__list" >
-                    <li class="side-nav__list__item">
-                        <a href="/seller/dashboard" class="side-nav__list__item__link">Dashboard</a>
-                    </li>
                     <li class="side-nav__list__item">
                         <a href="/seller/products" class="side-nav__list__item__link">Manage Products</a>
                     </li>
