@@ -8,9 +8,8 @@ import session from "express-session";
 import MongoDBSession from "connect-mongodb-session";
 import flash from 'connect-flash';
 import sellerRoute from "./routes/seller-route.js";
-import * as authMiddleware from "./middleware/auth-middleware.js";
-import authRoute from "./routes/auth-route.js";
 import userRoute from "./routes/user-route.js";
+import authRoute from "./routes/auth-route.js";
 
 const app = express();
 const mongooseConnect = mongoose.connect(process.env.MONGODB_URI);
@@ -37,9 +36,9 @@ app.use((req, res, next) => {
 
     next();
 });
-app.use("/seller", authMiddleware.isAuthorized("seller"), sellerRoute);
-app.use("/", authRoute);
+app.use("/seller", sellerRoute);
 app.use("/", userRoute);
+app.use("/", authRoute);
 
 mongooseConnect.then((result) => {
     app.listen(process.env.PORT);

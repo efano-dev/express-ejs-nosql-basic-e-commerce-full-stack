@@ -149,7 +149,7 @@ main {
     color: var(--clr-secondary);
 }
 
-.auth-form-container {
+.centered-container {
     display: grid;
     place-items: center;
     height: calc(100dvh - (var(--nav-padding) * 2) - (1rem * var(--line-height)));

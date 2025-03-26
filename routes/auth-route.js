@@ -4,15 +4,17 @@ import * as authMiddleware from "../middleware/auth-middleware.js";
 
 const router = express.Router();
 
-router.route("/register")
-    .get(authMiddleware.isLoggedIn, authController.getRegister)
-    .post(authMiddleware.isLoggedIn, authController.postRegister);
-
-router.route("/login")
-    .get(authMiddleware.isLoggedIn, authController.getLogin)
-    .post(authMiddleware.isLoggedIn, authController.postLogin);
-
 router.route("/logout")
     .post(authMiddleware.isAuthenticated, authController.postLogout);
+
+router.use(authMiddleware.isLoggedIn);
+
+router.route("/register")
+    .get(authController.getRegister)
+    .post(authController.postRegister);
+
+router.route("/login")
+    .get(authController.getLogin)
+    .post(authController.postLogin);
 
 export default router;

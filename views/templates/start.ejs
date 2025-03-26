@@ -42,6 +42,14 @@
                                 </a>
                             </li>
 
+                            <% if (user.role === "user") { %>
+                                <li class="top-nav__list__item__dropdown-list__item">
+                                    <a href="/subscribe-seller" class="top-nav__list__item__dropdown-list__item__link">
+                                        Subscribe as Seller
+                                    </a>
+                                </li>
+                            <% } %>
+
                             <% if (user.role === "seller") { %>
                                 <li class="top-nav__list__item__dropdown-list__item">
                                     <a href="<%= (url.split('/')[1] === 'seller') ? '/' : '/seller' %>" class="top-nav__list__item__dropdown-list__item__link">
@@ -65,10 +73,10 @@
                     </li>
                 <% } else { %>
                     <li class="top-nav__list__item top-nav__list__item-right">
-                        <a href="/login" class="top-nav__list__item__link <%= (url === '/login') ? 'active' : '' %>">Sign In</a>
+                        <a href="/login" class="top-nav__list__item__link">Sign In</a>
                     </li>
                     <li class="top-nav__list__item">
-                        <a href="/register" class="top-nav__list__item__link <%= (url === '/register') ? 'active' : '' %>">Sign Up</a>
+                        <a href="/register" class="top-nav__list__item__link">Sign Up</a>
                     </li>
                 <% } %>
             </ul>
