@@ -4,9 +4,10 @@ import * as authMiddleware from "../middleware/auth-middleware.js";
 
 const router = express.Router();
 
-router.route("/subscribe-seller")
-    .get(authMiddleware.isAuthenticated, authMiddleware.isAuthorized("user"), userController.getSubscribeSeller)
-    .post(authMiddleware.isAuthenticated, authMiddleware.isAuthorized("user"), userController.subscribeSeller);
+router
+	.route("/subscribe-seller")
+	.get(authMiddleware.isAuthenticated, authMiddleware.isAuthorized("user"), userController.getSubscribeSeller)
+	.post(authMiddleware.isAuthenticated, authMiddleware.isAuthorized("user"), userController.subscribeSeller);
 
 router.get("/products", userController.getProducts);
 

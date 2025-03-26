@@ -4,9 +4,9 @@ const topNavListItemDropdownButton = document.getElementById("topNavListItemDrop
 const topNavListItemDropdownList = document.getElementById("topNavListItemDropdownList");
 
 topNavToggler.onclick = (event) => {
-    topNavList.classList.toggle("active");
+	topNavList.classList.toggle("active");
 };
 
 topNavListItemDropdownButton.onclick = (event) => {
-    topNavListItemDropdownList.classList.toggle("active");
+	topNavListItemDropdownList.classList.toggle("active");
 };

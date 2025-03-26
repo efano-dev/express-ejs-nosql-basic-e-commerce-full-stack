@@ -6,9 +6,7 @@ const router = express.Router();
 
 router.use(authMiddleware.isAuthenticated, authMiddleware.isAuthorized("seller"));
 
-router.route("/products")
-    .get(sellerController.getProducts)
-    .post(sellerController.createProduct);
+router.route("/products").get(sellerController.getProducts).post(sellerController.createProduct);
 
 router.get("/", sellerController.getProducts);
 

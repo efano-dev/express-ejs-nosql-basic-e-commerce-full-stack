@@ -3,9 +3,9 @@ const addProductModalClose = document.getElementById("addProductModalClose");
 const addProductModal = document.getElementById("addProductModal");
 
 addProduct.onclick = (event) => {
-    addProductModal.classList.add("active");
+	addProductModal.classList.add("active");
 };
 
 addProductModalClose.onclick = (event) => {
-    addProductModal.classList.remove("active");
+	addProductModal.classList.remove("active");
 };
