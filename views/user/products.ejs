@@ -1,24 +1,26 @@
 <%- include("../templates/start") %>
 
-<div class="card-container">
-	<% if (products.length > 0) { %> <% for (const product of products) { %>
-	<article class="card">
-		<img src="<%= product.imageSource %>" alt="<%= product.title %> Image" class="card__image" />
-		<div class="card__content">
-			<h2 class="card__content__h2"><%= product.title %></h2>
-			<p class="card__content__details"><%= product.details %></p>
-			<p class="card__content__price">$<%= product.price %></p>
-			<p class="card__content__seller">Seller: <%= product.user.name %></p>
+    <div class="card-container">
+        <% if (products.length > 0) { %>
+            <% for (const product of products) { %>
+                <article class="card">
+                    <img src="<%= product.imageSource %>" alt="<%= product.title %> Image" class="card__image" />
+                    <div class="card__content">
+                        <h2 class="card__content__h2"><%= product.title %></h2>
+                        <p class="card__content__details"><%= product.details %></p>
+                        <p class="card__content__price">$<%= product.price %></p>
+                        <p class="card__content__seller">Seller: <%= product.user.name %></p>
 
-			<div class="card__content__button-group">
-				<a href="/products/:productId" class="card__content__button">Details</a>
-				<button type="button" class="card__content__button">Add to Cart</button>
-			</div>
-		</div>
-	</article>
-	<% } %> <% } else { %>
-	<h2>No Products Available.</h2>
-	<% } %>
-</div>
+                        <div class="card__content__button-group">
+                            <a href="/products/:productId" class="card__content__button">Details</a>
+                            <button type="button" class="card__content__button">Add to Cart</button>
+                        </div>
+                    </div>
+                </article>
+            <% } %>
+        <% } else { %>
+            <h2>No Products Available.</h2>
+        <% } %>
+    </div>
 
 <%- include("../templates/end") %>

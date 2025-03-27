@@ -1,43 +1,45 @@
 <%- include("./templates/start") %>
 
-<div class="centered-container">
-	<form action="/register" method="POST" class="auth-form">
-		<h2>Register</h2>
+    <div class="centered-container">
+        <form action="/register" method="POST" class="auth-form">
+            <h2>Register</h2>
 
-		<% if(error) { %>
-		<p class="auth-form-error"><%= error %></p>
-		<% } %> <% if(success) { %>
-		<p class="auth-form-success"><%= success %></p>
-		<% } %>
+            <% if(error) { %>
+                <p class="auth-form-error"><%= error %></p>
+            <% } %>
+            
+            <% if(success) { %>
+                <p class="auth-form-success"><%= success %></p>
+            <% } %>
 
-		<div class="auth-form__input-group">
-			<label for="name">Name</label>
-			<input type="text" name="name" id="name" class="auth-form__input" value="<%= input.name %>" />
-		</div>
+            <div class="auth-form__input-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" class="auth-form__input" value="<%= input.name %>" />
+            </div>
 
-		<div class="auth-form__input-group">
-			<label for="email">Email</label>
-			<input type="text" name="email" id="email" class="auth-form__input" value="<%= input.email %>" />
-		</div>
+            <div class="auth-form__input-group">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" class="auth-form__input" value="<%= input.email %>" />
+            </div>
 
-		<div class="auth-form__input-group">
-			<label for="password">Password</label>
-			<input type="password" name="password" id="password" class="auth-form__input" value="<%= input.password %>" />
-		</div>
+            <div class="auth-form__input-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="auth-form__input" value="<%= input.password %>" />
+            </div>
 
-		<div class="auth-form__input-group">
-			<label for="confirmPassword">Confirm Password</label>
-			<input
-				type="password"
-				name="confirmPassword"
-				id="confirmPassword"
-				class="auth-form__input"
-				value="<%= input.confirmPassword %>"
-			/>
-		</div>
+            <div class="auth-form__input-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input
+                    type="password"
+                    name="confirmPassword"
+                    id="confirmPassword"
+                    class="auth-form__input"
+                    value="<%= input.confirmPassword %>"
+                />
+            </div>
 
-		<button type="submit" class="auth-form__button">Sign Up</button>
-	</form>
-</div>
+            <button type="submit" class="auth-form__button">Sign Up</button>
+        </form>
+    </div>
 
 <%- include("./templates/end") %>
