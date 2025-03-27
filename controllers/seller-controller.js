@@ -18,12 +18,13 @@ const getProducts = async (req, res, next) => {
 
 const createProduct = async (req, res, next) => {
 	const { title, details, price } = req.body;
+    const file = req.file;
 	const user = req.session.user;
 
 	try {
 		await Product.create({
 			title: title,
-			imageSource: "",
+			imageSource: `/uploads/${ file.filename }`,
 			details: details,
 			price: price,
 			user: user._id,
