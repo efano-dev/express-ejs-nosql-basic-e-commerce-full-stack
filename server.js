@@ -1,7 +1,3 @@
-import { config } from "dotenv";
-
-config();
-
 import express from "express";
 import mongoose from "mongoose";
 import session from "express-session";
