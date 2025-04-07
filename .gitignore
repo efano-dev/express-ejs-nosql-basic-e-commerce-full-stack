@@ -1,6 +1,6 @@
 # Own Files
-public/uploads/*
-!public/uploads/.gitkeep
+src/public/uploads/*
+!src/public/uploads/.gitkeep
 
 # Logs
 logs

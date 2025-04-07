@@ -1,10 +1,10 @@
 {
 	"name": "express-ejs-nosql-basic-e-commerce-full-stack",
 	"version": "1.0.0",
-	"main": "server.js",
+	"main": "src/server.js",
 	"scripts": {
-		"start:dev": "nodemon --env-file=.env server.js",
-		"start:prod": "node --env-file=.env server.js",
+		"start:dev": "nodemon --env-file=.env src/server.js",
+		"start:prod": "node --env-file=.env src/server.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"type": "module",
