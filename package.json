@@ -3,8 +3,10 @@
 	"version": "1.0.0",
 	"main": "src/server.js",
 	"scripts": {
-		"start:dev": "nodemon --env-file=.env src/server.js",
-		"start:prod": "node --env-file=.env src/server.js",
+		"start:dev": "nodemon --env-file=.env.development.local src/server.js",
+		"start:prod": "node --env-file=.env.production.local src/server.js",
+		"create-env:dev": "cp .env.example .env.development.local",
+		"create-env:prod": "cp .env.example .env.production.local",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"type": "module",

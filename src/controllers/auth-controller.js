@@ -15,29 +15,29 @@ const getRegister = (req, res, next) => {
 };
 
 const postRegister = async (req, res, next) => {
-	const { name, email, password, confirmPassword } = req.body;
-
-	if (!name || !email || !password) {
-		req.flash("error", "Name, Email, and Password are Required.");
-		req.flash("name", name);
-		req.flash("email", email);
-		req.flash("password", password);
-		req.flash("confirmPassword", confirmPassword);
-
-		return res.redirect("/register");
-	}
-
-	if (password !== confirmPassword) {
-		req.flash("error", "Password and Confirm Password do not Match.");
-		req.flash("name", name);
-		req.flash("email", email);
-		req.flash("password", password);
-		req.flash("confirmPassword", confirmPassword);
-
-		return res.redirect("/register");
-	}
-
 	try {
+        const { name, email, password, confirmPassword } = req.body;
+
+        if (!name || !email || !password) {
+            req.flash("error", "Name, Email, and Password are Required.");
+            req.flash("name", name);
+            req.flash("email", email);
+            req.flash("password", password);
+            req.flash("confirmPassword", confirmPassword);
+
+            return res.redirect("/register");
+        }
+
+        if (password !== confirmPassword) {
+            req.flash("error", "Password and Confirm Password do not Match.");
+            req.flash("name", name);
+            req.flash("email", email);
+            req.flash("password", password);
+            req.flash("confirmPassword", confirmPassword);
+
+            return res.redirect("/register");
+        }
+
 		const existingUser = await User.findOne({
 			email: email,
 		});
@@ -92,17 +92,17 @@ const getLogin = (req, res, next) => {
 };
 
 const postLogin = async (req, res, next) => {
-	const { email, password } = req.body;
-
-	if (!email || !password) {
-		req.flash("error", "Email and Password are Required.");
-		req.flash("email", email);
-		req.flash("password", password);
-
-		return res.redirect("/login");
-	}
-
 	try {
+        const { email, password } = req.body;
+    
+        if (!email || !password) {
+            req.flash("error", "Email and Password are Required.");
+            req.flash("email", email);
+            req.flash("password", password);
+    
+            return res.redirect("/login");
+        }
+
 		const existingUser = await User.findOne({
 			email: email,
 		});
@@ -140,6 +140,7 @@ const postLogin = async (req, res, next) => {
 			role: existingUser.role,
 			__v: existingUser.__v,
 		};
+        
 		res.redirect("/");
 	} catch (error) {
 		console.error(error);
