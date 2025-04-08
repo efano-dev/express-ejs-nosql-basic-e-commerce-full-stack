@@ -4,6 +4,8 @@ import * as authMiddleware from "../middleware/auth-middleware.js";
 
 const router = express.Router();
 
+router.get("/products/:productId", userController.getProduct);
+
 router
 	.route("/subscribe-seller")
 	.get(authMiddleware.isAuthenticated, authMiddleware.isAuthorized("user"), userController.getSubscribeSeller)

@@ -1,6 +1,25 @@
 import Product from "../models/product-model.js";
 import User from "../models/user-model.js";
 
+const getProduct = async (req, res, next) => {
+	try {
+        const { productId } = req.params;
+        const user = req.session.user;
+
+		const product = await Product.findById(productId).populate("user");
+
+        if ((user && user._id.toString() === product.user._id.toString()) || product.deletedAt) {
+            return res.redirect("/");
+        }
+
+		res.render("user/product", {
+			product: product,
+		});
+	} catch (error) {
+		console.error(error);
+	}
+};
+
 const getSubscribeSeller = (req, res, next) => {
 	res.render("user/subscribe-seller");
 };
@@ -49,4 +68,9 @@ const getProducts = async (req, res, next) => {
 	}
 };
 
-export { getSubscribeSeller, subscribeSeller, getProducts };
+export {
+    getProduct,
+    getSubscribeSeller,
+    subscribeSeller,
+    getProducts
+};

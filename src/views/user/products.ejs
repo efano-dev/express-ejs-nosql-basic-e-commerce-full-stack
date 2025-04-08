@@ -12,7 +12,7 @@
                         <p class="card__content__seller">Seller: <%= product.user.name %></p>
 
                         <div class="card__content__button-group">
-                            <a href="/products/:productId" class="card__content__button">Details</a>
+                            <a href="/products/<%= product._id %>" class="card__content__button">Details</a>
                             <button type="button" class="card__content__button">Add to Cart</button>
                         </div>
                     </div>

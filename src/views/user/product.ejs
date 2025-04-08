@@ -1,0 +1,19 @@
+<%- include("../templates/start") %>
+
+    <div class="product-container">
+        <article class="product">
+            <img src="<%= product.imageSource %>" alt="<%= product.title %> Image" class="product__image" />
+            <div class="product__content">
+                <h2 class="product__content__h2"><%= product.title %></h2>
+                <p class="product__content__details"><%= product.details %></p>
+                <p class="product__content__price">$<%= product.price %></p>
+                <p class="product__content__seller">Seller: <%= product.user.name %></p>
+
+                <div class="product__content__button-group">
+                    <button type="button" class="product__content__button">Add to Cart</button>
+                </div>
+            </div>
+        </article>
+    </div>
+
+<%- include("../templates/end") %>

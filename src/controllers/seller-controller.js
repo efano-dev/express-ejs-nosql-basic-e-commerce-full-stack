@@ -37,4 +37,7 @@ const createProduct = async (req, res, next) => {
 	}
 };
 
-export { getProducts, createProduct };
+export {
+    getProducts,
+    createProduct
+};

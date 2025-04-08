@@ -43,7 +43,7 @@ const postRegister = async (req, res, next) => {
 		});
 
 		if (existingUser) {
-			if (existingUser.deletedAt !== null) {
+			if (existingUser.deletedAt) {
 				req.flash("error", "Email is associated to a Deleted User.");
 				req.flash("name", name);
 				req.flash("email", email);
@@ -115,7 +115,7 @@ const postLogin = async (req, res, next) => {
 			return res.redirect("/login");
 		}
 
-		if (existingUser.deletedAt !== null) {
+		if (existingUser.deletedAt) {
 			req.flash("error", "Email is associated to a Deleted User.");
 			req.flash("email", email);
 			req.flash("password", password);
